@@ -23,6 +23,9 @@ class Pet
     #[ORM\JoinColumn(nullable: false)]
     private $petCategory;
 
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'pets')]
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +63,18 @@ class Pet
     public function setPetCategory(?PetCategory $petCategory): self
     {
         $this->petCategory = $petCategory;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

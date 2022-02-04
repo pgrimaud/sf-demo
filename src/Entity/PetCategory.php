@@ -72,4 +72,9 @@ class PetCategory
 
         return $this;
     }
+
+    public function __toString(): string
+    {
+        return 'Category : ' . $this->getName();
+    }
 }
